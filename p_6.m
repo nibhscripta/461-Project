@@ -20,9 +20,10 @@ function p_6()
     plot_response(sys, u_plus_20, t_range, "+20K")
 
 function plot_response(sys, u, t, type)
-    [t, y] = lsim(sys, u, t);
+    [y, t] = lsim(sys, u, t);
     figure
-    plot(y, t)
+    plot(t, y)
+    grid on
     xlabel("Time (hr)")
     ylabel("Temperature (K)")
     title("Response to a Step of "+type+" in T_0")
