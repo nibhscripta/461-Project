@@ -1,13 +1,28 @@
 function p_6()
+    disp("Problem 6")
+
     system_data = read_system_dict();
 
-    A = system_data.state_space.around_T_0.A;
-    b = system_data.state_space.around_T_0.b;
-    c = system_data.state_space.around_T_0.c;
-    d = system_data.state_space.around_T_0.d;
+    sys = create_system(system_data.state_space.around_T_0);
 
-    sys = ss(A, b, c, d);
+    N = 100;
 
-    [y, t] = step(sys);
+    t_range = linspace(0, 100, N);
 
-    plot(t, 5 * y)
+    u_minus_5 = -5 * ones(1, N);
+    u_plus_5 = 5 * ones(1, N);
+    u_plus_10 = 10 * ones(1, N);
+    u_plus_20 = 20 * ones(1, N);
+
+    plot_response(sys, u_minus_5, t_range, "-5K")
+    plot_response(sys, u_plus_5, t_range, "+5K")
+    plot_response(sys, u_plus_10, t_range, "+10K")
+    plot_response(sys, u_plus_20, t_range, "+20K")
+
+function plot_response(sys, u, t, type)
+    [t, y] = lsim(sys, u, t);
+    figure
+    plot(y, t)
+    xlabel("Time (hr)")
+    ylabel("Temperature (K)")
+    title("Response to a Step of "+type+" in T_0")

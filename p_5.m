@@ -1,16 +1,26 @@
 function p_5()
+    disp("Problem 5")
+
     system_data = read_system_dict();
 
-    A = system_data.state_space.around_T_0.A;
-    b = system_data.state_space.around_T_0.b;
-    c = system_data.state_space.around_T_0.c;
-    d = system_data.state_space.around_T_0.d;
+    disp("System around T_0:")
 
-    sys = ss(A, b, c, d);
+    sys = create_system(system_data.state_space.around_T_0);
 
-    display("System around T_0:")
+    [poles, zeros, k, eigen_values] = p_5_returns(sys)
 
-    poles = pole(sys)
-    zeros = zero(sys)
+    disp("System around U:")
 
-    k = -c * A^-1 * b + d
+    sys = create_system(system_data.state_space.around_U);
+
+    [poles, zeros, k, eigen_values] = p_5_returns(sys)
+    
+    function [poles, zeros, k, eigen_values] = p_5_returns(sys)
+        poles = pole(sys);
+        zeros = zero(sys);
+    
+        k = dcgain(sys);
+    
+        eigen_values = eig(sys.A);
+    end
+end
