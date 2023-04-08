@@ -9,12 +9,3 @@ $$\frac{dC_A}{dt}=\frac{F}{V}\left(C_{A0}-C_A\right)-k_1(T)C_A\left(C_A+C_B-C_{A
 $$\frac{dC_S}{dt}=\frac{F}{V}\left(C_{S0}-C_S\right)-k_2(T)C_S$$
 
 $$\frac{dT}{dt}=\frac{F}{V}\left(T_0-T\right)+\frac{-\Delta H_1k_1(T)C_A\left(C_A+C_B-C_{A0}\right)-\Delta H_2k_2(T)C_S}{\rho C_p}-\frac{UA\left(T-T_c\right)}{V\rho C_p}$$
-
-
-## Question 2
-
-$C_{T,s}=460.32878421135734$
-
-$C_{A,s}=0.21086752735908276$
-
-$C_{S,s}=2.999991854637766$
