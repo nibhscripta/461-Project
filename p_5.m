@@ -1,19 +1,19 @@
-function p_5()
-    disp("Problem 5")
+function sol = p_5()
+    sol = {};
 
     system_data = read_system_dict();
 
-    disp("System around T_0:")
 
     sys = create_system(system_data.state_space.around_T_0);
 
-    [poles, zeros, k, eigen_values] = p_5_returns(sys)
-
-    disp("System around U:")
+    val_dict = {};
+    [val_dict.poles, val_dict.zeros, val_dict.k, val_dict.eigen_values] = p_5_returns(sys);
+    sol.around_T_0 = val_dict;
 
     sys = create_system(system_data.state_space.around_U);
 
-    [poles, zeros, k, eigen_values] = p_5_returns(sys)
+    [val_dict.poles, val_dict.zeros, val_dict.k, val_dict.eigen_values] = p_5_returns(sys);
+    sol.around_U = val_dict;
     
     function [poles, zeros, k, eigen_values] = p_5_returns(sys)
         poles = pole(sys);

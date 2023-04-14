@@ -25,7 +25,7 @@ $$\frac{dT}{dt}=\frac{F}{V}\left(T_0-T\right)+\frac{-\Delta H_1k_1(T)C_A\left(C_
 6. ☒
 7. ☒
 8. ☐
-9. ☐
+9. ☒
 10. ☐
 11. ☐
 12. ☐
