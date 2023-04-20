@@ -10,7 +10,6 @@ function G = G_loop_PI(k_c, tau_I)
 
     G_p = tf(sys_around_U);
     G_w = tf(sys_around_T_0);
-    k_I = 1/tau_I;
-    G_c = tf(pid(k_c, k_I));
+    G_c = tf(k_c * [tau_I 1], [tau_I 0]);
 
     G = series(feedback(1, series(G_p, G_c)), G_w);

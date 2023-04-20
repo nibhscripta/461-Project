@@ -9,6 +9,6 @@ function G = G_loop_P(k_c)
 
     G_p = tf(sys_around_U);
     G_w = tf(sys_around_T_0);
-    G_c = tf(pid(k_c, 0, 0));
+    G_c = tf(k_c, 1);
 
     G = series(feedback(1, series(G_p, G_c)), G_w);
